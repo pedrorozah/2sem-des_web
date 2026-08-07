@@ -1,0 +1,9 @@
+<?php
+$flores = array("Orquídea", "Margarida", "Petúnia");
+$frutas = array("Laranja", "Maçã", "Limão");
+$cidades = array("Foz do Iguaçu", "Cascavel", "Toledo");
+$locais = array("Itaipu", "Cataratas", "Parque das Aves");
+
+$informacoes = array($flores, $frutas, $cidades, $locais);
+
+echo "";
