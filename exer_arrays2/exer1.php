@@ -1,12 +1,13 @@
 <?php
-$numeros = array(1, 3, 4, 7, 8, 10, 2, 11, 10, 22);
+$numeros = array(3, 2, 3, 4, 11, 4, 7, 8, 9, 10);
 $soma = 0;
 $media = 0;
 
-foreach ($numeros as $numero) {
-    echo "Número: {$numero} <br>";
-    $soma += $numero;
+echo "<h1>Lista de números:</h1><br>";
+for ($i = 0; $i < count($numeros); $i++) {
+    echo "<span>Número: {$numeros[$i]}</span><br>";
+    $soma += $numeros[$i];
 }
 
 $media = $soma / count($numeros);
-echo "<h1>Média dos números: {$media}</h1>";
+echo "<br>Média dos números: {$media}";

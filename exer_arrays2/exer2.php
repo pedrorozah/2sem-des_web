@@ -1,19 +1,18 @@
 <?php
-
-$palavras = array("arroz", "com", "feijão", "gosto", "muito");
-$array_vazio = array();
-
-// popula o array vazio e imprime as palavras;
-foreach ($palavras as $palavra) {
-    echo "<span>Palavra: {$palavra}</span><br>";
-    array_push($array_vazio, $palavra);
-}
-
-// imprime todas as palavras do array_vazio separado com virgula;
-echo "<p>";
+$palavras = array("arroz", "batata", "ovo", "farinha", "amendoim");
+$palavrasVazias = array();
 
 foreach ($palavras as $palavra) {
-    echo $palavra . ", ";
+    array_push($palavrasVazias, $palavra);
 }
 
-echo "</p>";
+echo "<h1>Palavras: ";
+foreach ($palavrasVazias as $i => $palavra) {
+    if ($i === array_key_last($palavrasVazias)) {
+        echo "{$palavra}. ";
+    } else {
+        echo "{$palavra}, ";
+    }
+}
+
+echo "</h1>";
