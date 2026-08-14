@@ -1,0 +1,1 @@
+Integração entre cliente-servidor, utilizando HTTPS e métodos POST e GET;
