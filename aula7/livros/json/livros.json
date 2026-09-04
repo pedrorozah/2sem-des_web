@@ -1,0 +1,23 @@
+[
+    {
+        "id": "6a99ffff0c179",
+        "titulo": "O Alquimista",
+        "autor": "Paulo Coelho",
+        "genero": "F",
+        "qtd-paginas": "200"
+    },
+    {
+        "id": "6a9a00341db66",
+        "titulo": "Como fazer amigos e influenciar pessoas",
+        "autor": "Dale Carnegie",
+        "genero": "O",
+        "qtd-paginas": "142"
+    },
+    {
+        "id": "6a9a008acfa07",
+        "titulo": "High Probabilities Trading Strategies",
+        "autor": "Robert Miner",
+        "genero": "",
+        "qtd-paginas": "300"
+    }
+]
