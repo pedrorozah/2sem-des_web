@@ -9,3 +9,10 @@ define("DB_HOST", "localhost");
 define("DB_NAME", "db_crud");
 define("DB_USER", "root");
 define("DB_PASSWORD", "bancodedados");
+
+// Constante para a URL do sistema
+define("BASE_URL", "/pedro/mvc_alunos_login");
+
+// COnstantes para os dados da sessão
+define("USU_LOGADO_ID", "usuarioLogadoId");
+define("USU_LOGADO_NOME", "usuarioLogadoNome");

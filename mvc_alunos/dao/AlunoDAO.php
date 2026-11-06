@@ -3,11 +3,9 @@
 include_once(__DIR__ . "/../util/Connection.php");
 include_once(__DIR__ . "/../model/Aluno.php");
 
-class AlunoDAO
-{
+class AlunoDAO {
 
-    public function listar()
-    {
+    public function listar() {
 
         $sql = "SELECT a.*, 
                     c.nome nome_curso, c.turno turno_curso  
@@ -25,9 +23,8 @@ class AlunoDAO
         return $alunos;
     }
 
-    public function buscarPorId(int $id)
-    {
-
+    public function buscarPorId(int $id) {
+        
         $sql = "SELECT a.*, 
                     c.nome nome_curso, c.turno turno_curso  
                 FROM alunos a
@@ -42,34 +39,33 @@ class AlunoDAO
         //Criar o objeto Aluno
         $alunos = $this->map($result);
 
-        if (count($alunos) == 1)
+        if(count($alunos) == 1)
             return $alunos[0];
-        elseif (count($alunos) == 0)
+        elseif(count($alunos) == 0)
             return null;
 
-        die("AlunoDAO.buscarPorId - Erro: mais de um aluno" .
-            " encontrado para o ID " . $id);
+        die("AlunoDAO.buscarPorId - Erro: mais de um aluno".
+                " encontrado para o ID " . $id);
     }
 
-    public function inserir(Aluno $aluno)
-    {
-
+    public function inserir(Aluno $aluno) {
         $sql = "INSERT INTO alunos (nome, idade, estrangeiro, id_curso)
-        VALUES (?, ?, ?, ?)";
-
+                VALUES (?, ?, ?, ?)";
+        
         try {
             $conn = Connection::getConnection();
             $stmt = $conn->prepare($sql);
-            $stmt->execute(array(
-                $aluno->getNome(),
-                $aluno->getIdade(),
-                $aluno->getEstrangeiro(),
-                $aluno->getCurso()->getId(),
-            ));
-        } catch (PDOException $e) {
-            return "Erro ao inserir o aluno!" . $e->getMessage();
+            $stmt->execute(array($aluno->getNome(),
+                                $aluno->getIdade(),
+                                $aluno->getEstrangeiro(),
+                                $aluno->getCurso()->getId()));
+        } catch(PDOException $e) {
+            return "Erro ao inserir o aluno! " . $e->getMessage();
         }
+
+        return "";
     }
+
     public function alterar(Aluno $aluno) {
         $conn = Connection::getConnection();
 
@@ -89,32 +85,30 @@ class AlunoDAO
         return "";
     }
 
-
-    public function excluir(int $idAluno)
-    {
+    public function excluir(int $idAluno) {
         $sql = "DELETE FROM alunos WHERE id = ?";
-
+        
         try {
             $conn = Connection::getConnection();
             $stmt = $conn->prepare($sql);
             $stmt->execute(array($idAluno));
-        } catch (PDOException $e) {
-            return "Erro ao inserir o aluno!" . $e->getMessage();
+        } catch(PDOException $e) {
+            return "Erro ao excluir o aluno! " . $e->getMessage();
         }
+
         return "";
     }
 
-    public function map(array $dados)
-    {
+    public function map(array $dados) {
         $alunos = array();
 
-        foreach ($dados as $d) {
+        foreach($dados as $d) {
             $aluno = new Aluno();
             $aluno->setId($d["id"]);
             $aluno->setNome($d["nome"]);
             $aluno->setEstrangeiro($d["estrangeiro"]);
             $aluno->setIdade($d["idade"]);
-
+            
             $curso = new Curso();
             $curso->setId($d["id_curso"]);
             $curso->setNome($d["nome_curso"]);
@@ -126,4 +120,6 @@ class AlunoDAO
 
         return $alunos;
     }
+
 }
+

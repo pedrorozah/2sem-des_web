@@ -2,17 +2,17 @@
 
 include_once(__DIR__ . "/../dao/AlunoDAO.php");
 include_once(__DIR__ . "/../model/Aluno.php");
-include_once(__DIR__ . "/../service/AlunoServise.php");
+include_once(__DIR__ . "/../service/AlunoService.php");
+
 
 class AlunoController {
 
     private AlunoDAO $alunoDAO;
-    private AlunoServise $alunoServise;
-    
+    private AlunoService $alunoService;
 
     public function __construct() {
         $this->alunoDAO = new AlunoDAO();
-        $this->alunoServise = new AlunoServise();
+        $this->alunoService = new AlunoService();
     }
 
     public function listar() {
@@ -24,35 +24,36 @@ class AlunoController {
     }
 
     public function inserir(Aluno $aluno) {
-        
-        //1 - Validar os dados
-        $erros = $this->alunoServise->validar($aluno);
-        
-        //2 - Persistir o objeto (salvar no banco de dados)
-        if(empty($erros)){
+        //1- Validar os dados
+        $erros = $this->alunoService->validar($aluno);
+
+        if(empty($erros)) {
+            //2- Persistir o objeto (salvar no banco de dados)
             $msgErro = $this->alunoDAO->inserir($aluno);
             if($msgErro)
                 array_push($erros, $msgErro);
         }
 
-    return $erros;
+        return $erros;
     }
-        public function alterar(Aluno $aluno) {
-        
-        //1 - Validar os dados
-        $erros = $this->alunoServise->validar($aluno);
-        
-        //2 - Persistir o objeto (salvar no banco de dados)
-        if(empty($erros)){
+
+    public function alterar(Aluno $aluno) {
+        //1- Validar os dados
+        $erros = $this->alunoService->validar($aluno);
+
+        if(empty($erros)) {
+            //2- Persistir o objeto (salvar no banco de dados)
             $msgErro = $this->alunoDAO->alterar($aluno);
             if($msgErro)
                 array_push($erros, $msgErro);
         }
 
-    return $erros;
+        return $erros;
     }
 
-    public function excluir(int $idAluno){
+    public function excluir(int $idAluno) {
         return $this->alunoDAO->excluir($idAluno);
     }
+
+
 }

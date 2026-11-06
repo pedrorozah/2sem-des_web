@@ -1,13 +1,36 @@
 <?php
-include_once(__DIR__ . "/view/include/header.php");
+
+include_once(__DIR__ . "/view/login/validar.php");
+
+require_once(__DIR__ . "/view/include/header.php");
+
+include_once(__DIR__ . "/view/include/menu.php");
+
 ?>
 
-<div class="row">
-    <div class="col-lg-6 col-sm-12 alert alert-primary">Info 1</div>
-    <div class="col-lg-3 col-sm-6 alert alert-primary">Info 2</div>
-    <div class="col-lg-3 col-sm-6 alert alert-primary">Info 3</div>
+<div class="row mt-3 justify-content-center">
+    <div class="col-3">
+        <div class="card text-center">
+            <img class="card-image-top mx-auto"
+                src="img/card_alunos.png"
+                style="max-width: 100%; height: auto;" />
+
+            <div class="card-body">
+                <h5 class="card-title">Alunos</h5>
+            </div>
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a href="view/alunos/listar.php"
+                        class="card-link">
+                        Listagem de Alunos</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
 
+
 <?php
-include_once(__DIR__ . "/view/include/footer.php");
+require_once(__DIR__ . "/view/include/footer.php");
 ?>
